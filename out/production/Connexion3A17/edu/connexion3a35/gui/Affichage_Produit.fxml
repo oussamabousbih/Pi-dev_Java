@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.connexion3a35.gui.Affichage_ProduitController">
+   <children>
+      <ListView fx:id="list_view_produit" layoutX="77.0" layoutY="58.0" prefHeight="200.0" prefWidth="467.0" />
+      <Button fx:id="id_modifier" layoutX="242.0" layoutY="307.0" mnemonicParsing="false" onAction="#modify_pro" prefHeight="25.0" prefWidth="153.0" styleClass="btn" stylesheets="@Table2.css" text="Modifier" />
+      <Button fx:id="id_supprimer" layoutX="424.0" layoutY="307.0" mnemonicParsing="false" onAction="#delete_produit" prefHeight="25.0" prefWidth="153.0" styleClass="btn" stylesheets="@Table2.css" text="Supprimer" />
+      <Label layoutX="212.0" layoutY="17.0" prefHeight="30.0" prefWidth="212.0" text="Liste des Produits">
+         <font>
+            <Font name="System Bold" size="21.0" />
+         </font>
+      </Label>
+      <Button fx:id="id_ajouter" layoutX="59.0" layoutY="307.0" mnemonicParsing="false" onAction="#ajouter" prefHeight="25.0" prefWidth="153.0" styleClass="btn" stylesheets="@Table2.css" text="Ajouter" />
+   </children>
+</AnchorPane>
