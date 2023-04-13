@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="GUI.AddTypeController">
+   <children>
+      <Label layoutX="130.0" layoutY="97.0" text="Nom du Type" />
+      <Label layoutX="130.0" layoutY="164.0" text="Description" />
+      <TextField fx:id="TFNomTS" layoutX="258.0" layoutY="92.0" prefHeight="32.0" prefWidth="198.0" />
+      <TextField fx:id="TFDescTS" layoutX="257.0" layoutY="159.0" prefHeight="32.0" prefWidth="198.0" />
+      <Button fx:id="BTAdd" layoutX="255.0" layoutY="248.0" mnemonicParsing="false" onAction="#save_type" prefHeight="32.0" prefWidth="87.0" text="Valider" />
+   </children>
+</AnchorPane>
