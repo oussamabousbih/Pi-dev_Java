@@ -68,6 +68,8 @@ public class DeleteCommentController implements Initializable {
     if (selectedCommentaire != null) {
         int id = selectedCommentaire.getId();
         cmnt.supprimerCommentaire(new Commentaire(id));
+                System.out.println(id);
+
     }
 
                 

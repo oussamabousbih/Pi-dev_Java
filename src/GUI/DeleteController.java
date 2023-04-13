@@ -51,7 +51,7 @@ private ChoiceBox<String> idChoiceBox;
     String selectedContent = idChoiceBox.getValue();
     Article selectedArticle = null;
     for (Article article : articles) {
-        if (article.getContenu().equals(selectedContent)) {
+        if (article.getSujet().equals(selectedContent)) {
             selectedArticle = article;
             break;
         }
@@ -59,6 +59,7 @@ private ChoiceBox<String> idChoiceBox;
     if (selectedArticle != null) {
         int id = selectedArticle.getId();
         art.supprimerArticle(new Article(id));
+
     }
 
 
