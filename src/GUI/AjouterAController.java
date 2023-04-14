@@ -13,6 +13,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import services.CRUDArticle;
 
@@ -23,12 +24,11 @@ import services.CRUDArticle;
  */
 public class AjouterAController implements Initializable {
 
-    @FXML
-    private TextField fxid;
+
     @FXML
     private TextField fxsujet;
     @FXML
-    private TextField fxcontenu;
+    private TextArea fxcontenu;
     @FXML
     private TextField fximage;
     @FXML
@@ -41,16 +41,49 @@ public class AjouterAController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
-
+    private boolean validateSujet() {
+        if (fxsujet.getText().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Erreur de saisie");
+            alert.setHeaderText(null);
+            alert.setContentText("Veuillez saisir un sujet.");
+            alert.showAndWait();
+            return false;
+        }
+        return true;
+    }
+    
+    private boolean validateContenu() {
+        if (fxcontenu.getText().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Erreur de saisie");
+            alert.setHeaderText(null);
+            alert.setContentText("Veuillez saisir un contenu.");
+            alert.showAndWait();
+            return false;
+        }
+        return true;
+    }
+        private boolean validateImage() {
+        if (fximage.getText().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Erreur de saisie");
+            alert.setHeaderText(null);
+            alert.setContentText("Veuillez saisir une image.");
+            alert.showAndWait();
+            return false;
+        }
+        return true;
+    }
     @FXML
     private void save(ActionEvent event) {
         
-        int id = Integer.parseInt(fxid.getText());
+if ( validateSujet() && validateContenu() && validateImage()) {
         String sujet = fxsujet.getText();
         String contenu = fxcontenu.getText();
         String image = fximage.getText();
         
-        Article a = new Article(id,sujet,contenu,image);
+        Article a = new Article(3,sujet,contenu,image);
         
         CRUDArticle art = new CRUDArticle();
         
@@ -67,5 +100,5 @@ public class AjouterAController implements Initializable {
         alert.show();
 
     }
-    
+    }
 }

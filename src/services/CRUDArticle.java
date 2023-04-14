@@ -102,6 +102,7 @@ public class CRUDArticle implements InterfaceArticle{
             article.setContenu(RS.getString("Contenu"));
             article.setCreated_at(RS.getString("Created_at"));
             article.setViews(RS.getInt("Views"));
+            article.setImage(RS.getString("image"));
         }
         System.out.println("ok");
     } catch (SQLException ex) {

@@ -46,14 +46,27 @@ public class AddCommentController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+    
+        private boolean validateContenu() {
+        if (fxcontenu.getText().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Erreur de saisie");
+            alert.setHeaderText(null);
+            alert.setContentText("Veuillez saisir un contenu.");
+            alert.showAndWait();
+            return false;
+        }
+        return true;
+    }
+        
     @FXML
     private void save(ActionEvent event) {
         
 
-        int user = Integer.parseInt(fxuser.getText());
+if ( validateContenu()) {
         String contenu = fxcontenu.getText();
         
-        Commentaire c = new Commentaire(articleId,user,contenu);
+        Commentaire c = new Commentaire(articleId,3,contenu);
         
         CRUDCommentaire cmnt = new CRUDCommentaire();
         
@@ -69,6 +82,7 @@ public class AddCommentController implements Initializable {
 
         alert.show();
 
+    }
     }
     
 }

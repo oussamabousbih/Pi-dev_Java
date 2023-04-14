@@ -8,6 +8,7 @@ package GUI;
 import entities.Article;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -25,6 +26,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Separator;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import services.CRUDArticle;
@@ -39,7 +42,7 @@ public class DetailAController implements Initializable {
     @FXML
     private VBox vbox;
     @FXML
-    private ScrollPane scrollpanel;
+    private ScrollPane scrollPane;
 
     /**
      * Initializes the controller class.
@@ -50,22 +53,28 @@ public class DetailAController implements Initializable {
        int maxChars = 70;
        List<Article> articles = art.afficherArticle();
        StringBuilder sb = new StringBuilder();
-       
+               List<String> badWords = Arrays.asList("bhim", "badword");
+
        
        for (Article article : articles) {
-    String contenu = article.getContenu();
-    if (contenu.length() > maxChars) {
-        contenu = contenu.substring(0, maxChars) + "...";
+           String sanitizedArticleContent = article.getContenu();
+            String sanitizedArticleSujet = article.getSujet();
+    for (String badWord : badWords) {
+        sanitizedArticleContent = sanitizedArticleContent.replaceAll("(?i)" + badWord, "****");
+        sanitizedArticleSujet = sanitizedArticleSujet.replaceAll("(?i)" + badWord, "****");
+    }
+    if (sanitizedArticleContent.length() > maxChars) {
+        sanitizedArticleContent = sanitizedArticleContent.substring(0, maxChars) + "...";
     }
 
     Label articleDetails = new Label();
     articleDetails.setText("Auteur : " + article.getId_Auteur() + "\n" +
                             "Views : " + article.getViews() + "\n" +
                             "Date : " + article.getCreated_at() + "\n" +
-                            "Sujet Article : " + article.getSujet() + "\n" +
-                            "Contenu : " + contenu + "\n\n");
+                            "Sujet Article : " + sanitizedArticleSujet + "\n" +
+                            "Contenu : " + sanitizedArticleContent + "\n\n");
 
-    Button readMoreButton = new Button("Read More article " + article.getId());
+    Button readMoreButton = new Button("Read More details ");
     readMoreButton.setOnAction(event -> {
     try {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("ArticleByID.fxml"));
@@ -84,10 +93,19 @@ public class DetailAController implements Initializable {
 });
 
 
-    HBox articleBox = new HBox(articleDetails, readMoreButton);
-    articleBox.setAlignment(Pos.CENTER_RIGHT);
-    VBox.setMargin(articleBox, new Insets(0, 0, 10, 0)); // Add margin to separate articles
-    vbox.getChildren().addAll(articleBox, new Separator());
+HBox articleDetailsBox = new HBox(articleDetails);
+articleDetailsBox.setAlignment(Pos.CENTER_LEFT);
+HBox.setHgrow(articleDetails, Priority.ALWAYS); // Make articleDetails grow
+
+HBox readMoreButtonBox = new HBox(readMoreButton);
+readMoreButtonBox.setAlignment(Pos.CENTER_RIGHT);
+
+HBox articleBox = new HBox(articleDetailsBox, readMoreButtonBox);
+articleBox.setAlignment(Pos.CENTER_LEFT);
+HBox.setHgrow(readMoreButtonBox, Priority.ALWAYS); // Make readMoreButtonBox grow
+
+VBox.setMargin(articleBox, new Insets(0, 0, 10, 0)); // Add margin to separate articles
+vbox.getChildren().addAll(articleBox, new Separator());
 
 
 
@@ -97,6 +115,7 @@ public class DetailAController implements Initializable {
 
 
     }
+
        
     }    
     

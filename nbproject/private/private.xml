@@ -3,13 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/mazee/OneDrive/Bureau/PiDev%20Projet%20DESKTOP/src/GUI/DeleteCommentController.java</file>
+            <file>file:/C:/Users/mazee/OneDrive/Bureau/PiDev%20Projet%20DESKTOP/src/GUI/IndexController.java</file>
             <file>file:/C:/Users/mazee/OneDrive/Bureau/PiDev%20Projet%20DESKTOP/src/services/CRUDArticle.java</file>
-            <file>file:/C:/Users/mazee/OneDrive/Bureau/PiDev%20Projet%20DESKTOP/src/GUI/AddCommentController.java</file>
             <file>file:/C:/Users/mazee/OneDrive/Bureau/PiDev%20Projet%20DESKTOP/src/tests/PiDevProjetDESKTOP.java</file>
+            <file>file:/C:/Users/mazee/OneDrive/Bureau/PiDev%20Projet%20DESKTOP/src/interfaces/InterfaceArticle.java</file>
             <file>file:/C:/Users/mazee/OneDrive/Bureau/PiDev%20Projet%20DESKTOP/src/GUI/ArticleByIDController.java</file>
-            <file>file:/C:/Users/mazee/OneDrive/Bureau/PiDev%20Projet%20DESKTOP/src/GUI/UpdateCommentController.java</file>
-            <file>file:/C:/Users/mazee/OneDrive/Bureau/PiDev%20Projet%20DESKTOP/src/GUI/ModifierAController.java</file>
+            <file>file:/C:/Users/mazee/OneDrive/Bureau/PiDev%20Projet%20DESKTOP/src/GUI/DetailAController.java</file>
         </group>
     </open-files>
 </project-private>

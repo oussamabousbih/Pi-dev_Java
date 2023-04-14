@@ -30,13 +30,14 @@ public class PiDevProjetDESKTOP {
         Article delete = new Article(64);
         CRUDArticle art = new CRUDArticle();
         CRUDCommentaire cmnt = new CRUDCommentaire();
+        
         //art.ajouterArticle(add);
         //cmnt.ajouterCommentaire(addc);
         //cmnt.modifierCommentaire(editc);
         //cmnt.supprimerCommentaire(deletec);
         //art.modifierArticle(edit);
         //art.supprimerArticle(delete);
-        //System.out.println(art.afficherArticle());
+        //System.out.println(art.afficherArticleDetail(15));
         //System.out.println(cmnt.afficherCommentaireDetail(17));
         //System.out.println(cmnt.afficherCommentaire());
     }

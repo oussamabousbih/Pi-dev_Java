@@ -43,10 +43,45 @@ public class ModifierAController implements Initializable {
         CRUDArticle art = new CRUDArticle();
        List<Article> articles = art.afficherArticle();
        for (Article article : articles) {
+           if (article.getId_Auteur() == 3) {
         idChoiceBox.getItems().add(article.getSujet());
        }
+       }
     }     
-
+    private boolean validateSujet() {
+        if (fxsujet.getText().isEmpty()) {
+            Alert alert = new Alert(AlertType.WARNING);
+            alert.setTitle("Erreur de saisie");
+            alert.setHeaderText(null);
+            alert.setContentText("Veuillez saisir un sujet.");
+            alert.showAndWait();
+            return false;
+        }
+        return true;
+    }
+    
+    private boolean validateContenu() {
+        if (fxcontenu.getText().isEmpty()) {
+            Alert alert = new Alert(AlertType.WARNING);
+            alert.setTitle("Erreur de saisie");
+            alert.setHeaderText(null);
+            alert.setContentText("Veuillez saisir un contenu.");
+            alert.showAndWait();
+            return false;
+        }
+        return true;
+    }
+    private boolean validateChoice() {
+    if (idChoiceBox.getValue() == null) {
+        Alert alert = new Alert(AlertType.WARNING);
+        alert.setTitle("Erreur de saisie");
+        alert.setHeaderText(null);
+        alert.setContentText("Veuillez sélectionner un élément dans la liste.");
+        alert.showAndWait();
+        return false;
+    }
+    return true;
+}
     @FXML
     private void save(ActionEvent event) {
         
@@ -63,16 +98,17 @@ public class ModifierAController implements Initializable {
             break;
         }
     }
-    if (selectedArticle != null) {
+    if ( validateChoice() && validateSujet() && validateContenu()) {
+    
         int id = selectedArticle.getId();
         art.modifierArticle(new Article(id,sujet,contenu));
-    }
+    
     
 
 
         
 
-        
+    
         
         Alert alert = new Alert(AlertType.INFORMATION);
 
@@ -83,8 +119,8 @@ public class ModifierAController implements Initializable {
         alert.setContentText("Article modifier avec succés !");
 
         alert.show();
-
-
+    
+}
     }
     
     

@@ -44,9 +44,33 @@ public class UpdateCommentController implements Initializable {
         System.out.println(commentaires);
         System.out.println(articleId);
         for (Commentaire commentaire : commentaires) {
+            if (commentaire.getId_Auteur() == 3) {
         idchoice.getItems().add(commentaire.getContenu());
        }
+        }
     }
+     private boolean validateContenu() {
+        if (fxcontenu.getText().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Erreur de saisie");
+            alert.setHeaderText(null);
+            alert.setContentText("Veuillez saisir un contenu.");
+            alert.showAndWait();
+            return false;
+        }
+        return true;
+    }
+     private boolean validateChoice() {
+    if (idchoice.getValue() == null) {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Erreur de saisie");
+        alert.setHeaderText(null);
+        alert.setContentText("Veuillez sélectionner un élément dans la liste.");
+        alert.showAndWait();
+        return false;
+    }
+    return true;
+}
         @FXML
 
 private void save(ActionEvent event) {
@@ -62,10 +86,10 @@ private void save(ActionEvent event) {
             break;
         }
     }
-    if (selectedCommentaire != null) {
+    if ( validateChoice() && validateContenu() ) {
         int id = selectedCommentaire.getId();
         cmnt.modifierCommentaire(new Commentaire(id,contenu));
-    }
+    
 
                 
 
@@ -83,4 +107,4 @@ private void save(ActionEvent event) {
 
     }   
     
-}
+}}

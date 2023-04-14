@@ -44,13 +44,24 @@ public class DeleteCommentController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         CRUDCommentaire cmnt = new CRUDCommentaire();
-        List<Commentaire> commentaires = cmnt.afficherCommentaireDetail(articleId); 
-        System.out.println(commentaires);
-        System.out.println(articleId);
-        for (Commentaire commentaire : commentaires) {
+List<Commentaire> commentaires = cmnt.afficherCommentaireDetail(articleId); 
+for (Commentaire commentaire : commentaires) {
+    if (commentaire.getId_Auteur() == 3) {
         fxchoice.getItems().add(commentaire.getContenu());
-       }
-    }    
+    }
+}
+    }
+private boolean validateChoice() {
+    if (fxchoice.getValue() == null) {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Erreur de saisie");
+        alert.setHeaderText(null);
+        alert.setContentText("Veuillez sélectionner un élément dans la liste.");
+        alert.showAndWait();
+        return false;
+    }
+    return true;
+}    
     @FXML
     private void save(ActionEvent event) {
                 CRUDCommentaire cmnt = new CRUDCommentaire();
@@ -65,12 +76,12 @@ public class DeleteCommentController implements Initializable {
             break;
         }
     }
-    if (selectedCommentaire != null) {
+    if ( validateChoice() ) {
         int id = selectedCommentaire.getId();
         cmnt.supprimerCommentaire(new Commentaire(id));
                 System.out.println(id);
 
-    }
+    
 
                 
 
@@ -81,11 +92,11 @@ public class DeleteCommentController implements Initializable {
 
         alert.setHeaderText(null);
 
-        alert.setContentText("Article supprimée avec succés !");
+        alert.setContentText("Commentaire supprimée avec succés !");
 
         alert.show();
         
 
     }   
     
-}
+    }}

@@ -40,10 +40,22 @@ private ChoiceBox<String> idChoiceBox;
         CRUDArticle art = new CRUDArticle();
        List<Article> articles = art.afficherArticle();
        for (Article article : articles) {
+           if (article.getId_Auteur() == 3) {
         idChoiceBox.getItems().add(article.getSujet());
        }
+       }
     }    
-
+private boolean validateChoice() {
+    if (idChoiceBox.getValue() == null) {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Erreur de saisie");
+        alert.setHeaderText(null);
+        alert.setContentText("Veuillez sélectionner un élément dans la liste.");
+        alert.showAndWait();
+        return false;
+    }
+    return true;
+}
     @FXML
     private void save(ActionEvent event) {
                 CRUDArticle art = new CRUDArticle();
@@ -56,11 +68,11 @@ private ChoiceBox<String> idChoiceBox;
             break;
         }
     }
-    if (selectedArticle != null) {
+    if ( validateChoice() ) {
         int id = selectedArticle.getId();
         art.supprimerArticle(new Article(id));
 
-    }
+    
 
 
                 
@@ -77,8 +89,7 @@ private ChoiceBox<String> idChoiceBox;
         alert.show();
         
 
-    }
+    }}}
 
   
     
-}
