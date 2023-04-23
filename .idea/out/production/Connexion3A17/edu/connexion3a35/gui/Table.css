@@ -1,0 +1,122 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 20 févr. 2023, 16:35:03
+    Author     : 21655
+*/
+.root {
+    -fx-background-image: url('japan2.gif');
+    -fx-background-size:cover;
+}
+.white-form{
+    -fx-background-color: #fff;
+    -fx-background-radius: 8px;
+}
+
+.border{
+    -fx-border-color: linear-gradient(to bottom right,#2d1854, #b01ba5);
+    -fx-border-width: 4px;
+    -fx-border-radius: 8px;
+}
+
+.btn{
+    -fx-background-color: linear-gradient(to bottom right,#2d1854, #b01ba5);
+    -fx-text-fill: #fff;
+    -fx-font-size: 14px;
+    -fx-cursor: hand;
+}
+
+.btn:hover{
+    -fx-background-color: linear-gradient(to bottom right,#b01ba5,#2d1854);
+}
+
+.table-view{
+    -fx-padding : 0px;
+    -fx-background-color:transparent;
+    -fx-border-color: linear-gradient(to bottom right,#1fa0a0, #316666);
+    -fx-border-radius: 8px;
+    -fx-border-width: 6px;
+}
+
+.table-view .column-header{
+    -fx-alignment: CENTER;
+}
+.table tr {
+  background-color: white;
+}
+
+.table-view .column-header-background{
+    -fx-background-color: linear-gradient(to bottom right,#1fa0a0, #316666);
+    -fx-background-radius: 8px 8px 0 0;
+    -fx-background-inset: 0 0 0 0;
+}
+
+.table-view .column-header, .filter{
+    -fx-background-color: transparent;
+    -fx-size: 50px;
+}
+.table-view .column-header:hover{
+    -fx-background-color: linear-gradient(to bottom right,#15cdcd, #043c3c);
+}
+.tab-pane .tab-header-area .tab-header-background {
+    -fx-opacity: 0;
+}
+
+.tab-pane
+{
+    -fx-tab-min-width:90px;
+}
+
+.tab{
+    -fx-background-insets: 0 1 0 1,0,0;
+}
+.tab-pane .tab
+{
+    -fx-background-color: #e6e6e6;
+
+}
+
+.tab-pane .tab:selected
+{
+    -fx-background-color: linear-gradient(to bottom right,#1fa0a0, #316666);
+}
+
+.tab .tab-label { 
+    -fx-alignment: CENTER;
+    -fx-text-fill: #316666;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+}
+
+.tab:selected .tab-label { 
+    -fx-alignment: CENTER;
+    -fx-text-fill:#fff;
+}
+.separator { 
+        -fx-background-color: linear-gradient(to bottom right,#1fa0a0, #316666);
+
+}
+.transparent-cell {
+    -fx-background-color: transparent;
+}
+.table-cell {
+  -fx-font-weight: bold;
+}
+.table-view:selected .table-cell {
+   -fx-text-fill:#043c3c;
+}
+
+/*.table-view .table-row-cell:selected {
+  -fx-background-color: yellow;
+}*/
+.table-view .table-row-cell:selected .table-cell {
+  -fx-text-fill:linear-gradient(to bottom right,#1fa0a0, #316666);
+}
+
+
+
+
+
