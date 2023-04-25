@@ -6,14 +6,14 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.AjouterAController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" stylesheets="@CSSFRONT.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.AjouterAController">
    <children>
-      <Label layoutX="173.0" layoutY="102.0" text="Sujet :" />
+      <Label layoutX="173.0" layoutY="105.0" text="Sujet :" />
       <Label layoutX="164.0" layoutY="167.0" text="Contenu :" />
-      <Label layoutX="169.0" layoutY="226.0" text="Image :" />
-      <TextField fx:id="fxsujet" layoutX="286.0" layoutY="98.0" />
-      <TextField fx:id="fximage" layoutX="286.0" layoutY="222.0" />
-      <Button fx:id="fxajouter" layoutX="272.0" layoutY="295.0" mnemonicParsing="false" onAction="#save" text="Ajouter" />
+      <Label layoutX="173.0" layoutY="229.0" text="Image :" />
+      <TextField fx:id="fxsujet" layoutX="286.0" layoutY="98.0" prefHeight="28.0" prefWidth="200.0" />
+      <TextField fx:id="fximage" layoutX="286.0" layoutY="222.0" prefHeight="28.0" prefWidth="200.0" />
+      <Button fx:id="fxajouter" layoutX="260.0" layoutY="295.0" mnemonicParsing="false" onAction="#save" prefHeight="22.0" prefWidth="80.0" styleClass="context-menu" text="Ajouter" textFill="WHITE" />
       <TextArea fx:id="fxcontenu" layoutX="286.0" layoutY="142.0" prefHeight="67.0" prefWidth="200.0" />
    </children>
 </AnchorPane>

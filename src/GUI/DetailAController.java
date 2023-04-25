@@ -50,7 +50,7 @@ public class DetailAController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
        CRUDArticle art = new CRUDArticle();
-       int maxChars = 70;
+       int maxChars = 35;
        List<Article> articles = art.afficherArticle();
        StringBuilder sb = new StringBuilder();
                List<String> badWords = Arrays.asList("bhim", "badword");
@@ -63,8 +63,9 @@ public class DetailAController implements Initializable {
         sanitizedArticleContent = sanitizedArticleContent.replaceAll("(?i)" + badWord, "****");
         sanitizedArticleSujet = sanitizedArticleSujet.replaceAll("(?i)" + badWord, "****");
     }
-    if (sanitizedArticleContent.length() > maxChars) {
+    if (sanitizedArticleContent.length() > maxChars && sanitizedArticleSujet.length() > maxChars) {
         sanitizedArticleContent = sanitizedArticleContent.substring(0, maxChars) + "...";
+        sanitizedArticleSujet = sanitizedArticleSujet.substring(0, maxChars) + "...";
     }
 
     Label articleDetails = new Label();
@@ -74,7 +75,7 @@ public class DetailAController implements Initializable {
                             "Sujet Article : " + sanitizedArticleSujet + "\n" +
                             "Contenu : " + sanitizedArticleContent + "\n\n");
 
-    Button readMoreButton = new Button("Read More details ");
+    Button readMoreButton = new Button("Read More");
     readMoreButton.setOnAction(event -> {
     try {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("ArticleByID.fxml"));

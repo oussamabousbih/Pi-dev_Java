@@ -19,7 +19,7 @@ import javafx.stage.Stage;
  *
  * @author mazee
  */
-public class FirstFXMain extends Application {
+public class FXFrontMain extends Application {
     
     @Override
     public void start(Stage primaryStage) {
@@ -29,7 +29,7 @@ public class FirstFXMain extends Application {
             root = FXMLLoader.load(getClass().getResource("Index.FXML"));
             Scene scene = new Scene(root);
         
-        primaryStage.setTitle("Gestion Article");
+        primaryStage.setTitle("Gestion Blog");
         primaryStage.setScene(scene);
         primaryStage.show();
         } catch (IOException ex) {

@@ -110,5 +110,41 @@ public class CRUDArticle implements InterfaceArticle{
     }
     return article;
 }
+    public String statArticle() {
+    String count = "";
+    String req = "SELECT count(*) FROM article";
+    try {
+        Statement ste = conn.createStatement();
+        ResultSet RS = ste.executeQuery(req);
+        if (RS.next()) {
+            count = RS.getString(1);
+        }
+        RS.close();
+        ste.close();
+    } catch (SQLException ex) {
+        System.out.println(ex.getMessage());
+    }
+    return count;
+}
+    public String statArticleToday() {
+    String count = "";
+    String req = "SELECT COUNT(*) as num_articles_today FROM article "
+               + "WHERE created_at >= CURDATE() AND created_at < DATE_ADD(CURDATE(), INTERVAL 1 DAY)";
+    try {
+        Statement ste = conn.createStatement();
+        ResultSet RS = ste.executeQuery(req);
+        if (RS.next()) {
+            count = RS.getString("num_articles_today");
+        }
+        RS.close();
+        ste.close();
+    } catch (SQLException ex) {
+        System.out.println(ex.getMessage());
+    }
+    return count;
+}
+
+
+    
     
 }

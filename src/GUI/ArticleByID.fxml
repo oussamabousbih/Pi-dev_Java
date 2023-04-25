@@ -5,13 +5,13 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.ArticleByIDController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" stylesheets="@CSSFRONT.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.ArticleByIDController">
    <children>
       <Label fx:id="fxarticle" layoutX="2.0" layoutY="1.0" prefHeight="361.0" prefWidth="591.0" text="ArticleByID" />
-      <Button fx:id="fxcomment" layoutX="40.0" layoutY="362.0" mnemonicParsing="false" onAction="#handleaddComment" text="Ajouter commentaire" />
-      <ScrollPane fx:id="fxarticleScrollPane" layoutX="2.0" layoutY="9.0" prefHeight="345.0" prefWidth="657.0" />
-      <Button layoutX="210.0" layoutY="362.0" mnemonicParsing="false" onAction="#handledeleteComment" text="Supprimer commentaire" />
-      <Button layoutX="383.0" layoutY="362.0" mnemonicParsing="false" onAction="#handleupdateComment" text="Modifer commentaire" />
-      <Button layoutX="535.0" layoutY="362.0" mnemonicParsing="false" onAction="#downloadToPDF" text="Download PDF" />
+      <Button fx:id="fxcomment" layoutX="22.0" layoutY="362.0" mnemonicParsing="false" onAction="#handleaddComment" prefHeight="22.0" prefWidth="154.0" styleClass="context-menu" text="Ajouter commentaire" textFill="WHITE" />
+      <ScrollPane fx:id="fxarticleScrollPane" layoutX="2.0" layoutY="9.0" prefHeight="345.0" prefWidth="657.0" stylesheets="@CSSFRONT.css" />
+      <Button layoutX="188.0" layoutY="362.0" mnemonicParsing="false" onAction="#handledeleteComment" prefHeight="22.0" prefWidth="165.0" styleClass="context-menu" text="Supprimer commentaire" textFill="WHITE" />
+      <Button layoutX="366.0" layoutY="362.0" mnemonicParsing="false" onAction="#handleupdateComment" prefHeight="22.0" prefWidth="154.0" styleClass="context-menu" text="Modifer commentaire" textFill="WHITE" />
+      <Button layoutX="532.0" layoutY="362.0" mnemonicParsing="false" onAction="#downloadToPDF" prefHeight="22.0" prefWidth="99.0" styleClass="context-menu" text="Download PDF" textFill="WHITE" />
    </children>
 </AnchorPane>

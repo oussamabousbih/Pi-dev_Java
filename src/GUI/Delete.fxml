@@ -5,10 +5,10 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.DeleteController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" stylesheets="@CSSFRONT.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.DeleteController">
    <children>
-      <Label layoutX="204.0" layoutY="183.0" text="ID Article" />
-      <Button fx:id="fxdelete" layoutX="264.0" layoutY="246.0" mnemonicParsing="false" onAction="#save" text="Supprimer" />
-      <ChoiceBox fx:id="idChoiceBox" layoutX="300.0" layoutY="179.0" prefWidth="150.0" />
+      <Label layoutX="118.0" layoutY="184.0" text="Select  Article :" />
+      <Button fx:id="fxdelete" layoutX="253.0" layoutY="246.0" mnemonicParsing="false" onAction="#save" prefHeight="22.0" prefWidth="95.0" styleClass="context-menu" text="Supprimer" textFill="WHITE" />
+      <ChoiceBox fx:id="idChoiceBox" layoutX="290.0" layoutY="179.0" prefHeight="25.0" prefWidth="205.0" styleClass="check-box" />
    </children>
 </AnchorPane>

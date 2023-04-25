@@ -111,5 +111,38 @@ public class CRUDCommentaire implements InterfaceCommentaire{
 
         return list;
 }
+    public String statCommentaire() {
+    String count = "";
+    String req = "SELECT count(*) FROM commentaire";
+    try {
+        Statement ste = conn.createStatement();
+        ResultSet RS = ste.executeQuery(req);
+        if (RS.next()) {
+            count = RS.getString(1);
+        }
+        RS.close();
+        ste.close();
+    } catch (SQLException ex) {
+        System.out.println(ex.getMessage());
+    }
+    return count;
+}
+    public String statCommentToday() {
+    String count = "";
+    String req = "SELECT COUNT(*) as num_comment_today FROM commentaire "
+               + "WHERE created_at >= CURDATE() AND created_at < DATE_ADD(CURDATE(), INTERVAL 1 DAY)";
+    try {
+        Statement ste = conn.createStatement();
+        ResultSet RS = ste.executeQuery(req);
+        if (RS.next()) {
+            count = RS.getString("num_comment_today");
+        }
+        RS.close();
+        ste.close();
+    } catch (SQLException ex) {
+        System.out.println(ex.getMessage());
+    }
+    return count;
+}
     
 }

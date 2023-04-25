@@ -36,7 +36,6 @@ import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.font.PDType0Font;
-import org.apache.pdfbox.pdmodel.font.PDType1Font;
 /**
  * FXML Controller class
  *
@@ -110,7 +109,10 @@ for (Commentaire commentaire : commentaires) {
     public void downloadToPDF() {
         
     StringBuilder sb = new StringBuilder();
-            CRUDArticle art = new CRUDArticle();
+    CRUDArticle art = new CRUDArticle();
+            CRUDCommentaire cmnt = new CRUDCommentaire();
+
+    List<Commentaire> commentaires = cmnt.afficherCommentaireDetail(articleId); 
 
     Article article = art.afficherArticleDetail(articleId);
                 String sanitizedArticleContent = article.getContenu();
@@ -128,6 +130,8 @@ for (Commentaire commentaire : commentaires) {
         String Date = "Date : " + article.getCreated_at();
         String Sujet = "Sujet Article : " + sanitizedArticleSujet;
         String Content = "Contenu : " + sanitizedArticleContent;
+        String Space = "-------- Comments --------";
+        
 
     File file = new File("article.pdf");
     try (PDDocument document = new PDDocument()) {
@@ -135,8 +139,11 @@ for (Commentaire commentaire : commentaires) {
         document.addPage(page);
         try (PDPageContentStream contentStream = new PDPageContentStream(document, page)) {
 contentStream.setFont(PDType0Font.load(document, new File("c:/windows/fonts/Helvetica.ttf")), 12);
+
+
+
             contentStream.beginText();
-            contentStream.newLineAtOffset(100, 700);
+            contentStream.newLineAtOffset(25, 700);
             contentStream.setLeading(14.5f);  // set the size of the newline to something reasonable
             contentStream.showText(id);
             contentStream.newLine();
@@ -147,8 +154,31 @@ contentStream.setFont(PDType0Font.load(document, new File("c:/windows/fonts/Helv
             contentStream.showText(Sujet);
             contentStream.newLine();
             contentStream.showText(Content);
+            contentStream.newLine();
+            contentStream.showText(Space);
+            for (Commentaire commentaire : commentaires) {
+    String sanitizedContent = commentaire.getContenu();
+    for (String badWord : badWords) {
+        sanitizedContent = sanitizedContent.replaceAll("(?i)" + badWord, "****");
+    }
+    String id1 = "Commentateur : " + commentaire.getId_Auteur();
+    String Date1 = "Date Commentaire : " + commentaire.getCreated_at();
+    String Content1 = "Contenu Commentaire : " + sanitizedContent;
+    String Space1 = "-------------------------------------" ;
+
+
+            contentStream.newLine();
+            contentStream.showText(id1);
+            contentStream.newLine();
+            contentStream.showText(Date1);
+            contentStream.newLine();
+            contentStream.showText(Content1);
+            contentStream.newLine();
+            contentStream.showText(Space1);
+            }
             contentStream.endText();
         }
+        
         document.save(file);
         document.close();
     } catch (IOException ex) {
