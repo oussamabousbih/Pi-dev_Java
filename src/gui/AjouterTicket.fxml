@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AjouterTicketController">
+   <children>
+      <Label layoutX="30.0" layoutY="209.0" text="Event ID" />
+      <Label layoutX="32.0" layoutY="143.0" text="Matricule" />
+      <Label layoutX="33.0" layoutY="269.0" text="Image" />
+      <Label layoutX="353.0" layoutY="209.0" text="Validité" />
+      <Label layoutX="363.0" layoutY="142.0" text="Date" />
+      <Label layoutX="360.0" layoutY="268.0" text="Prix" />
+      <TextField fx:id="tdate" layoutX="407.0" layoutY="139.0" />
+      <TextField fx:id="tvalidite" layoutX="407.0" layoutY="205.0" />
+      <TextField fx:id="tprix" layoutX="407.0" layoutY="264.0" />
+      <TextField fx:id="tmatricule" layoutX="99.0" layoutY="139.0" />
+      <TextField fx:id="tevent" layoutX="99.0" layoutY="205.0" />
+      <TextField fx:id="timage" layoutX="97.0" layoutY="264.0" />
+      <Button fx:id="btnajouterticket" layoutX="235.0" layoutY="327.0" mnemonicParsing="false" onAction="#ajouterticket" prefHeight="41.0" prefWidth="132.0" text="Ajouter Ticket">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="12.0" />
+         </font>
+      </Button>
+      <Pane layoutY="50.0" prefHeight="8.0" prefWidth="600.0" style="-fx-background-color: black;" />
+      <Text layoutX="20.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ajouter Ticket" wrappingWidth="245.31243896484375">
+         <font>
+            <Font name="Berlin Sans FB Demi Bold" size="28.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>

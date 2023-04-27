@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="627.0" prefWidth="866.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AfficheTicketController">
+   <children>
+      <TableView fx:id="tsticket" layoutX="155.0" layoutY="34.0" prefHeight="310.0" prefWidth="555.0">
+        <columns>
+          <TableColumn fx:id="tid" prefWidth="75.0" text="ID" />
+          <TableColumn fx:id="tmatricule" prefWidth="75.0" text="Matricule" />
+            <TableColumn fx:id="teventid" prefWidth="75.0" text="Event ID" />
+            <TableColumn fx:id="timage" prefWidth="75.0" text="Image" />
+            <TableColumn fx:id="tdate" prefWidth="87.20001220703125" text="Date" />
+            <TableColumn fx:id="tvalide" prefWidth="92.0" text="Valide" />
+            <TableColumn fx:id="tprix" prefWidth="80.00002441406252" text="Prix" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>
