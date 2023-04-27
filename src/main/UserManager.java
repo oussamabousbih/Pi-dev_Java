@@ -5,8 +5,8 @@
  */
 package main;
 
-import main.entities.DummyUser;
-import main.entities.gestion_rdv.CalandarDay;
+import entities.DummyUser;
+import entities.gestion_rdv.CalandarDay;
 
 /**
  *
@@ -33,6 +33,11 @@ public class UserManager {
     }
     
     
+    public void clear_all_fields(){
+        logged_User=null;
+        selectedDoctor=null;
+        
+    }
     
     
 }

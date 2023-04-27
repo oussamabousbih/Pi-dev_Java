@@ -8,11 +8,11 @@ package main;
 import java.util.Collection;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import main.entities.gestion_rdv.Appointment;
-import main.entities.gestion_rdv.CalandarDay;
-import main.entities.gestion_rdv.DummyPatientAppointment;
-import main.entities.gestion_rdv.DummyPatientAppointmentDoctorSide;
-import main.entities.gestion_rdv.TimeSlot;
+import entities.gestion_rdv.Appointment;
+import entities.gestion_rdv.CalandarDay;
+import entities.gestion_rdv.DummyPatientAppointment;
+import entities.gestion_rdv.DummyPatientAppointmentDoctorSide;
+import entities.gestion_rdv.TimeSlot;
 
 /**
  *

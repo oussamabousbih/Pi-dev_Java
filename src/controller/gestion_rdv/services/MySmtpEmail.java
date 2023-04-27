@@ -1,0 +1,132 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package controller.gestion_rdv.services;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import javax.mail.*;
+import javax.mail.internet.*;
+import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+/**
+ *
+ * @author rbaih
+ */
+public class MySmtpEmail {
+
+    //setting proprepreties
+    Properties properties = System.getProperties();
+    //account
+    private InternetAddress fromEmail;
+    private String password;
+    // session after authentication
+    Session session;
+    // the message to create;
+    MimeMessage mimeMessage;
+
+    // Constructor to set the email details
+    public MySmtpEmail(String accountEmail, String password) throws MessagingException {
+        // storing the fromEmail as InternetAddress not String
+        this.fromEmail = new InternetAddress(accountEmail);
+
+        this.configServerSmtp(accountEmail, password);
+
+        createNewMessage_andAssignSender();
+
+    }
+
+    // config server and smtp
+    private void configServerSmtp(String fromEmail, String password) throws MessagingException {
+        // SMTP server configuration for Gmail
+        String host = "smtp.gmail.com";
+        Properties properties = System.getProperties();
+
+        // Set SMTP server properties
+        properties.setProperty("mail.smtp.host", host);
+        properties.setProperty("mail.smtp.port", "465");
+        properties.setProperty("mail.smtp.auth", "true");
+        properties.setProperty("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+
+        // Create a new session with an authenticator object that provides the username and password
+        session = Session.getDefaultInstance(properties, new javax.mail.Authenticator() {
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(fromEmail, password);
+            }
+        });
+
+    }
+
+    private void createNewMessage_andAssignSender() throws MessagingException {
+
+        if (session != null) {
+            // Create a new message
+            this.mimeMessage = new MimeMessage(session);
+            // Set the sender and recipient addresses, subject, and message body
+            mimeMessage.setFrom(fromEmail);
+        } else {
+            System.err.println("session is null , null pointer exception occured @ createNewMessage_andAssignSender() .");
+        }
+
+    }
+
+    public void set_emailsToSentTo(String[] emailsArray) throws AddressException, MessagingException {
+
+        // get the addresses to send to 
+        InternetAddress[] toAddresses = new InternetAddress[emailsArray.length];
+        for (int i = 0; i < emailsArray.length; i++) {
+            toAddresses[i] = new InternetAddress(emailsArray[i]);
+        }
+
+        if (mimeMessage != null) {
+            mimeMessage.setRecipients(Message.RecipientType.TO, toAddresses);
+        } else {
+            System.err.println("mimeMessage is null , null pointer exception occured @ set_emailsToSentTo()");
+        }
+
+    }
+
+    // Method to send the email
+    public void setEmailSubject_andBody( String subject, String textMessageVersion, String htmlMessageVersion ) throws MessagingException {
+        
+        if (mimeMessage != null) {
+            
+            mimeMessage.setSubject(subject);
+
+            // Create the message body
+            MimeBodyPart textPart = new MimeBodyPart();
+            textPart.setText(textMessageVersion);
+
+            MimeBodyPart htmlPart = new MimeBodyPart();
+            htmlPart.setContent(htmlMessageVersion, "text/html");
+
+            Multipart multipart = new MimeMultipart();
+            multipart.addBodyPart(textPart);
+            multipart.addBodyPart(htmlPart);
+
+            mimeMessage.setContent(multipart);
+
+        } else {
+            System.err.println("mimeMessage is null , null pointer exception occured @ setEmailSubject_andBody()");
+        }
+
+    }
+
+    public void sendEmail() throws MessagingException {
+
+        if (mimeMessage != null && session != null ) // Send the message
+        
+            Transport.send(mimeMessage);
+        else {
+            System.err.println("mimeMessage is null , null pointer exception dude .");
+        }
+    }
+    
+    
+    
+
+}
