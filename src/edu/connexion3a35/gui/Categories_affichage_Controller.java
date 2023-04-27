@@ -137,7 +137,9 @@ public class Categories_affichage_Controller implements Initializable {
         };
 
         SettingUpListView.listObjectsOn_listView(list_view_cat, listcategorie, customEvent);
-
+       /* for (Categorie category : listcategorie) {
+            System.out.println(category.getNom_Categorie() + ": " + category.getNbProduits() + " products");
+        }*/
     }
 
     @FXML

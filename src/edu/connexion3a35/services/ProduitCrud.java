@@ -17,13 +17,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 /**
  *
  * @author msi
  */
 public class ProduitCrud implements InterfaceCRUD<Produit> {
-
+private MyConnection ds=MyConnection.getInstance();
     @Override
     public void ajouterEntitee(Produit t) {
         try {
@@ -132,5 +133,28 @@ public class ProduitCrud implements InterfaceCRUD<Produit> {
             System.out.println(ex.getMessage());
         }
     }
+/*    public List<Produit> rechercherEvents(String nom_produit) throws SQLException {
+        String req = "SELECT * FROM produit WHERE nom_produit LIKE ? OR id LIKE ?";
+        PreparedStatement pst = ds.getCnx().prepareStatement(req);
+        pst.setString(1, "%" + nom_produit + "%");
+        pst.setString(2, "%" + nom_produit + "%");
+        List<Produit> produits = new ArrayList<>();
+        ResultSet rs = pst.executeQuery();
 
+        while(rs.next()){
+
+            Produit t = new Produit(rs.getInt("id"), rs.getString("nom_produit"), rs.getString("marque"), rs.getString("description"), rs.getString("image_produit"),rs.getInt("categorie_produit_id"), rs.getInt("quantite_produit"), rs.getFloat("prix"));
+            produits.add(t);
+        }
+
+        return produits;
+    }*/
+    public List<Produit> Search(String t) {
+
+        List<Produit> list1 = new ArrayList<>();
+        List<Produit> list2 = listeDes();
+        list1 = (list2.stream().filter(c -> c.getNom_produit().startsWith(t)).collect(Collectors.toList()));
+
+        return list1;
+    }
 }

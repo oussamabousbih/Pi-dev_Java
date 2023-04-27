@@ -5,6 +5,7 @@
  */
 package edu.connexion3a35.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -15,14 +16,7 @@ public class Categorie {
     private int id;
     private String nom_Categorie;
 
-    public Categorie(int id, String nom_Categorie) {
-        this.id = id;
-        this.nom_Categorie = nom_Categorie;
-    }
 
-    public Categorie(String nom_Categorie) {
-        this.nom_Categorie = nom_Categorie;
-    }
 
     public void setProduits(List<Produit> produits) {
         this.produits = produits;
@@ -32,8 +26,24 @@ public class Categorie {
         return produits;
     }
 
-    private List<Produit> produits;
-    
+    private List<Produit> produits=new ArrayList<>();
+
+    public int getNbProduits() {
+        return produits.stream().mapToInt(p -> 1).sum();
+    }
+    public Categorie(int id, String nom_Categorie) {
+        this.id = id;
+        this.nom_Categorie = nom_Categorie;
+        this.produits = new ArrayList<>();
+
+    }
+
+    public Categorie(String nom_Categorie) {
+        this.nom_Categorie = nom_Categorie;
+        this.produits = new ArrayList<>();
+
+    }
+
     public Categorie() {
     }
 
@@ -52,11 +62,15 @@ public class Categorie {
     public void setNom_Categorie(String nom_Categorie) {
         this.nom_Categorie = nom_Categorie;
     }
-    
+    public Categorie(int id, String nom_Categorie, List<Produit> produits) {
+        this.id = id;
+        this.nom_Categorie = nom_Categorie;
+        this.produits = produits;
+    }
     
     @Override
     public String toString() {
-        return "Categorie{" + "id=" + id + ", nom_Categorie=" + nom_Categorie + '}';
+        return nom_Categorie;
     }
     
     

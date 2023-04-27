@@ -14,6 +14,9 @@ import javafx.scene.image.Image;
 public class Produit {
     private int id ,quantite,categorie_produit;
     private float prix;
+    Categorie cat;
+
+    private String nom_produit,marque,description,image_produit;
 
     public Produit( String nom_produit,float quantite, String description, String image_produit) {
         this.nom_produit = nom_produit;
@@ -21,6 +24,18 @@ public class Produit {
         this.description = description;
         this.image_produit = image_produit;
     }
+
+    public Produit(int id, String nom_produit, String marque, String description, String image_produit, int categorie_produit_id, int quantite_produit, float prix) {
+        this.id = id;
+        this.quantite = quantite_produit;
+        this.categorie_produit = categorie_produit_id;
+        this.prix = prix;
+        this.nom_produit = nom_produit;
+        this.marque = marque;
+        this.description = description;
+        this.image_produit = image_produit;
+    }
+
 
     public boolean testimagenull() {
 if (image_produit==null)
@@ -43,8 +58,6 @@ if (image_produit==null)
         this.categorie_produit = categorie_produit;
     }
     
-    private String nom_produit,marque,description,image_produit;
-    Categorie cat;
 
     public Produit(int id, int quantite, int categorie_produit, float prix, String nom_produit, String marque, String description, String image_produit, Categorie cat) {
         this.id = id;
@@ -173,6 +186,7 @@ if (image_produit==null)
     public String getImage_produit() {
         return image_produit;
     }
+
 
     @Override
     public String toString() {

@@ -79,6 +79,7 @@ public class Acceuil_pageController implements Initializable {
 
     @FXML
     private TextField tf_nomc;
+    CategorieCrud dao = new CategorieCrud();
 
     @FXML
     void tf_afficher(ActionEvent event) throws IOException {
@@ -90,6 +91,7 @@ public class Acceuil_pageController implements Initializable {
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+
     }
 
     @FXML
@@ -201,7 +203,7 @@ public class Acceuil_pageController implements Initializable {
         String nom_Categorie = tf_nomc.getText();
 
         // Check if nom_Categorie only contains letters
-        if (!nom_Categorie.matches("[a-zA-Z]+")) {
+        if (!nom_Categorie.matches("[a-zA-Z]+"+ " ")) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erreur");
             alert.setContentText("Le champ nom_Categorie ne peut contenir que des lettres!");

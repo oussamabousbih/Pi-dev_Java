@@ -5,30 +5,55 @@
  */
 package edu.connexion3a35.gui;
 
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.PageSize;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
 import edu.connexion3a35.entities.Categorie;
 import edu.connexion3a35.entities.Produit;
 import edu.connexion3a35.services.CategorieCrud;
 import edu.connexion3a35.services.ProduitCrud;
 import edu.connexion3a35.services.SettingUpListView;
+
+import java.beans.BeanInfo;
+import java.beans.PropertyDescriptor;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.ResourceBundle;
+import java.sql.SQLException;
+import java.util.*;
+import java.util.stream.Collectors;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.PageSize;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
+import java.util.Arrays;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.Initializable;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.ListView;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import javafx.util.Duration;
+import org.controlsfx.control.Notifications;
+
+
 /**
  * FXML Controller class
  *
@@ -39,11 +64,16 @@ public class Affichage_ProduitController implements Initializable {
     /**
      * Initializes the controller class.
      */
-    
+    final ObservableList options = FXCollections.observableArrayList();
+    public Button tf_pdf;
+
     @FXML
     private ListView<Produit> list_view_produit;
     @FXML
     private Button id_ajouter;
+
+    @FXML
+    private TextField filterfield1;
 
     @FXML
     void ajouter(ActionEvent event) throws IOException {
@@ -62,9 +92,9 @@ public class Affichage_ProduitController implements Initializable {
     @FXML
     private Button id_supprimer;
 
-       List<Produit> listproduit= new ArrayList<>();
-    List<Categorie> listcat= new ArrayList<>();
-       private Produit produit; 
+    List<Produit> listproduit = new ArrayList<>();
+    List<Categorie> listcat = new ArrayList<>();
+    private Produit produit;
 
     public ListView<Produit> getList_view_produit() {
         return list_view_produit;
@@ -98,7 +128,7 @@ public class Affichage_ProduitController implements Initializable {
         this.listproduit = listproduit;
     }
 
-  
+
     public Produit getProduit() {
         return produit;
     }
@@ -114,10 +144,12 @@ public class Affichage_ProduitController implements Initializable {
     public void setSelectedindex(int selectedindex) {
         this.selectedindex = selectedindex;
     }
-       int selectedindex;
+
+    int selectedindex;
+
     @FXML
     void delete_produit(ActionEvent event) {
-Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Voulez-vous supprimer ?", ButtonType.APPLY,
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Voulez-vous supprimer ?", ButtonType.APPLY,
                 ButtonType.CANCEL);
         alert.setTitle("Information Dialog");
         Optional<ButtonType> result = alert.showAndWait();
@@ -131,7 +163,7 @@ Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Voulez-vous supprimer ?",
 
     @FXML
     void modify_pro(ActionEvent event) throws IOException {
- Stage stage = (Stage) list_view_produit.getScene().getWindow();
+        Stage stage = (Stage) list_view_produit.getScene().getWindow();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("modifyProduit.fxml"));
         Parent root = loader.load();
         ModifyProduitController produitController = loader.getController();
@@ -144,27 +176,28 @@ Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Voulez-vous supprimer ?",
         produitController.getTf_marque().setText(produit.getMarque());
 
         produitController.setProduit(produit);
-        
+
 
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
 
     }
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-             // TODO
+        // TODO
         id_modifier.setVisible(false);
         id_supprimer.setVisible(false);
         Produit produit1 = new Produit();
-       ProduitCrud pr = new ProduitCrud();
+        ProduitCrud pr = new ProduitCrud();
         this.setListproduit(pr.listeDes());
 
         EventHandler<MouseEvent> customEvent = (event2) -> {
             // storing data to pass on PRODUCTManagement
             if (event2.getClickCount() == 1) {
-                Produit produit=this.getList_view_produit().getSelectionModel().getSelectedItem();
+                Produit produit = this.getList_view_produit().getSelectionModel().getSelectedItem();
                 setProduit(produit);
                 id_modifier.setVisible(true);
                 selectedindex = list_view_produit.getSelectionModel().getSelectedIndex();
@@ -177,6 +210,133 @@ Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Voulez-vous supprimer ?",
 //list_view_produit.getItems().add(produit);
         //SettingUpListView.listObjectsOn_listView(list_view_produit, listproduit, customEvent);
         SettingUpListView.listProduit_inside_listView(list_view_produit, listproduit, customEvent);
-    }    
-    
+        ProduitCrud per = new ProduitCrud();
+        filterfield1.textProperty().addListener((obs, oldText, newText) -> {
+            List<Produit> ae = per.Search(newText);
+            list_view_produit.getItems().setAll(ae);});
+
+
+    }
+    public void notif(String title, String text) {
+//    Image img = new Image("/gui/logofoot.png");
+//    ImageView imgView = new ImageView(img);
+//    imgView.setFitWidth(50); // adjust the size of the image as needed
+//    imgView.setFitHeight(50);
+
+        Notifications notificationBuilder = Notifications.create()
+                .title(title)
+                .text(text)
+                //.graphic(imgView) // set the image as the graphic for the notification
+                .hideAfter(Duration.seconds(7))
+                .position(Pos.BOTTOM_RIGHT);
+
+        notificationBuilder.show();
+    }
+    Stage stage;
+    Parent root;
+    Scene scene;
+    @FXML
+    void Stats(ActionEvent event) throws IOException {
+
+
+            root = FXMLLoader.load(getClass().getResource("Stats.fxml"));
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+
+
+    }
+    @FXML
+    void calculerT(ActionEvent event) {
+        int num = list_view_produit.getItems().size();
+        Integer tot = 0;
+       /* for (int i = 0; i < num; i++) {
+            Integer val = list_view_produit.getItems().get(i).getQuantite();
+            tot += val;
+
+        }*/
+
+        notif("Nombre disponible de produits","Votre produits disponible   est :\n" +Integer.toString(num));
+
+
+        }
+
+// sort the list by price
+
+    @FXML
+    void Trier(ActionEvent event) {
+
+            List<Produit> listProduit = list_view_produit.getItems();
+            List<Produit> sortedList = listProduit.stream()
+                    .sorted(Comparator.comparingDouble(Produit::getPrix))
+                    .collect(Collectors.toList());
+            list_view_produit.getItems().clear(); // Clear previous items
+            list_view_produit.getItems().addAll(sortedList); // Add sorted items
+
+
+
+    }
+
+
+    public void pdf(ActionEvent actionEvent) {
+
+        try {
+            Document document = new Document(PageSize.A4, 50, 50, 50, 50);
+            PdfWriter.getInstance(document, new FileOutputStream("table.pdf"));
+            document.open();
+
+            // Define column widths
+            float[] columnWidths = {1f, 1f, 1f, 1f, 1f, 1f, 1f,1f};
+
+
+            // Create PDF table and set column widths
+            PdfPTable pdfTable = new PdfPTable(columnWidths.length);
+            pdfTable.setWidths(columnWidths);
+
+            // Add table header and rows
+            addTableHeader(pdfTable);
+            addRows(pdfTable );
+
+            document.add(pdfTable);
+
+            document.close();
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("PDF");
+
+            alert.setHeaderText("PDF");
+            alert.setContentText("Enregistrement effectué avec succès!");
+
+            alert.showAndWait();
+        } catch (IOException | DocumentException e) {
+            e.printStackTrace();
+        }
+    }
+    private void addTableHeader(PdfPTable pdfTable) {
+        pdfTable.addCell("ID");
+        pdfTable.addCell("Nom Produit");
+        pdfTable.addCell("Prix Produit");
+        pdfTable.addCell("Quantité Produit");
+        pdfTable.addCell("Marque Produit");
+        pdfTable.addCell("Description Produit");
+        pdfTable.addCell("Image Produit");
+        pdfTable.addCell("Catégorie ID");
+    }
+
+
+    private void addRows(PdfPTable pdfTable) {
+        for (Produit produit : listproduit) {
+            pdfTable.addCell(String.valueOf(produit.getId()));
+            pdfTable.addCell(produit.getNom_produit());
+            pdfTable.addCell(Float.toString(produit.getPrix()));
+            pdfTable.addCell(produit.getQuantite()+"");
+            pdfTable.addCell(produit.getMarque());
+            pdfTable.addCell(produit.getDescription());
+            pdfTable.addCell(produit.getImage_produit());
+            pdfTable.addCell(String.valueOf(produit.getCategorie_produit()));
+        }
+    }
+
+
+
 }

@@ -3,19 +3,25 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.connexion3a35.gui.Affichage_ProduitController">
    <children>
-      <ListView fx:id="list_view_produit" layoutX="77.0" layoutY="58.0" prefHeight="200.0" prefWidth="467.0" />
+      <ListView fx:id="list_view_produit" layoutX="75.0" layoutY="92.0" prefHeight="200.0" prefWidth="467.0" />
       <Button fx:id="id_modifier" layoutX="242.0" layoutY="307.0" mnemonicParsing="false" onAction="#modify_pro" prefHeight="25.0" prefWidth="153.0" styleClass="btn" stylesheets="@Table2.css" text="Modifier" />
       <Button fx:id="id_supprimer" layoutX="424.0" layoutY="307.0" mnemonicParsing="false" onAction="#delete_produit" prefHeight="25.0" prefWidth="153.0" styleClass="btn" stylesheets="@Table2.css" text="Supprimer" />
-      <Label layoutX="212.0" layoutY="17.0" prefHeight="30.0" prefWidth="212.0" text="Liste des Produits">
+      <Label layoutX="212.0" layoutY="17.0" prefHeight="30.0" prefWidth="212.0" text="Liste des Produits" textFill="#0d0d57">
          <font>
             <Font name="System Bold" size="21.0" />
          </font>
       </Label>
-      <Button fx:id="id_ajouter" layoutX="59.0" layoutY="307.0" mnemonicParsing="false" onAction="#ajouter" prefHeight="25.0" prefWidth="153.0" styleClass="btn" stylesheets="@Table2.css" text="Ajouter" />
+      <Button fx:id="id_ajouter" layoutX="443.0" layoutY="51.0" mnemonicParsing="false" onAction="#ajouter" prefHeight="30.0" prefWidth="101.0" styleClass="btn" stylesheets="@Table2.css" text="Ajouter" />
+      <Button layoutX="59.0" layoutY="349.0" mnemonicParsing="false" onAction="#calculerT" prefHeight="25.0" prefWidth="153.0" styleClass="btn" stylesheets="@Table2.css" text="total" />
+      <Button layoutX="242.0" layoutY="349.0" mnemonicParsing="false" onAction="#Stats" prefHeight="25.0" prefWidth="153.0" styleClass="btn" stylesheets="@Table2.css" text="Statistique" />
+      <Button layoutX="424.0" layoutY="349.0" mnemonicParsing="false" onAction="#Trier" prefHeight="25.0" prefWidth="153.0" styleClass="btn" stylesheets="@Table2.css" text="Trier" />
+      <TextField fx:id="filterfield1" layoutX="77.0" layoutY="51.0" prefHeight="30.0" prefWidth="358.0" />
+      <Button fx:id="tf_pdf" layoutX="59.0" layoutY="307.0" mnemonicParsing="false" onAction="#pdf" prefHeight="30.0" prefWidth="153.0" styleClass="btn" stylesheets="@Table2.css" text="Pdf" />
    </children>
 </AnchorPane>

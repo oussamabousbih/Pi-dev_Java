@@ -48,6 +48,7 @@ public class CategorieCrud implements InterfaceCRUD<Categorie> {
                 Categorie c = new Categorie();
                 c.setId(rs.getInt(1));
                 c.setNom_Categorie(rs.getString("nom_categorie"));
+
                 myList.add(c);
             }
         } catch (SQLException ex) {
