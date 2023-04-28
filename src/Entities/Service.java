@@ -12,13 +12,24 @@ import java.util.Date;
  * @author Yasmine Rajhi
  */
 public class Service {
-    private int id;
+    private int id,type_service_id;
     private String NomService, Proprietaire, id_type, Prix;
     private Date date_debut, date_fin;
 
     public Service() {
     }
-    
+
+    public Service(int id, int type_service_id, String NomService, String Proprietaire, String id_type, String Prix, Date date_debut, Date date_fin) {
+        this.id = id;
+        this.type_service_id = type_service_id;
+        this.NomService = NomService;
+        this.Proprietaire = Proprietaire;
+        this.id_type = id_type;
+        this.Prix = Prix;
+        this.date_debut = date_debut;
+        this.date_fin = date_fin;
+    }
+
     public Service(int id, String NomService, String Proprietaire, String id_type, String Prix, Date date_debut, Date date_fin) {
         this.id = id;
         this.NomService = NomService;
@@ -27,6 +38,16 @@ public class Service {
         this.Prix = Prix;
         this.date_debut = date_debut;
         this.date_fin = date_fin;
+    }
+    
+    
+
+    public int getType_service_id() {
+        return type_service_id;
+    }
+
+    public void setType_service_id(int type_service_id) {
+        this.type_service_id = type_service_id;
     }
 
     public int getId() {
@@ -85,7 +106,9 @@ public class Service {
         this.date_fin = date_fin;
     }
 
+    @Override
     public String toString() {
-        return "Service{" + "id=" + id + ", NomService=" + NomService + ", Proprietaire=" + Proprietaire + ", id_type=" + id_type + ", Prix=" + Prix + ", date_debut=" + date_debut + ", date_fin=" + date_fin + '}';
+        return "id=" + id + ", NomService=" + NomService + ", Proprietaire=" + Proprietaire + ", id_type=" + id_type + ", Prix=" + Prix + ", date_debut=" + date_debut + ", date_fin=" + date_fin + '}';
     }
+    
 }

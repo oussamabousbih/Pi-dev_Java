@@ -1,0 +1,48 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 28 avr. 2023, 13:12:04
+    Author     : Yasmine Rajhi
+*/
+
+.myDialog {
+    -fx-background-color: #f5f5f5; /* background color */
+    -fx-background-radius: 10px; /* border radius */
+    -fx-border-width: 2px; /* border width */
+    -fx-border-color: #2b2b2b; /* border color */
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 10, 0, 0, 0); /* 3D effect */
+}
+
+.myDialog .dialog-pane {
+    -fx-padding: 20px; /* padding */
+}
+
+.myDialog .dialog-pane .content {
+    -fx-font-size: 16px; /* font size */
+}
+
+.myDialog .dialog-pane .label {
+    -fx-font-size: 16px; /* font size */
+    -fx-font-weight: bold; /* font weight */
+    -fx-text-fill: #2b2b2b; /* label text color */
+}
+
+.myDialog .dialog-pane .button {
+    -fx-background-color: #2b2b2b; /* button color */
+    -fx-text-fill: #f5f5f5; /* button text color */
+    -fx-font-size: 16px; /* font size */
+    -fx-font-weight: bold; /* font weight */
+    -fx-padding: 10px 20px; /* button padding */
+    -fx-background-radius: 5px; /* button border radius */
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 10, 0, 0, 0); /* 3D effect */
+}
+
+.myDialog .dialog-pane .button:hover {
+    -fx-background-color: #f5f5f5; /* button hover color */
+    -fx-text-fill: #2b2b2b; /* button hover text color */
+    -fx-border-color: #2b2b2b; /* button hover border color */
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 5, 0, 0, 0); /* 3D effect */
+}

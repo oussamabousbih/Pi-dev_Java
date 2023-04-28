@@ -1,0 +1,22 @@
+.parent{
+    -fx-background-color : #F3F4F7;
+    -fx-background-radius : 30px;
+}
+
+.sidebar{
+    -fx-background-radius : 0px 15px 15px 0px;
+}
+
+.pane{
+    -fx-background-color : #FFFFFF;
+    -fx-border-color : #C1C1C1;
+    -fx-background-radius : 0px 0px 30px 30px;
+    -fx-border-radius : 0px 0px 30px 30px;
+}
+
+.colored_cards{
+    -fx-background-color : linear-gradient(to right, #ee2a7b,#ff7db8);
+    -fx-background-radius : 10px;
+}
+
+/*AIESEC BLUE : #037Ef3*/
