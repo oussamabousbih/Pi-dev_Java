@@ -17,6 +17,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -46,6 +47,8 @@ public class AfficheTicketController implements Initializable {
     private TableColumn<event_ticket, String> tprix;
     @FXML
     private TableView<event_ticket> tsticket;
+    @FXML
+    private Button downloadButton;
 
     /**
      * Initializes the controller class.
@@ -72,8 +75,9 @@ public class AfficheTicketController implements Initializable {
             }
            
             
-     
            
     }    
+    
+    
     
 }
