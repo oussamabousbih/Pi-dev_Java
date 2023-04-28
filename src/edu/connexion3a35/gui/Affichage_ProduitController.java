@@ -5,9 +5,7 @@
  */
 package edu.connexion3a35.gui;
 
-import com.itextpdf.text.Document;
-import com.itextpdf.text.DocumentException;
-import com.itextpdf.text.PageSize;
+import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
@@ -19,22 +17,22 @@ import edu.connexion3a35.services.SettingUpListView;
 
 import java.beans.BeanInfo;
 import java.beans.PropertyDescriptor;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.*;
+import java.util.List;
 import java.util.stream.Collectors;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
-import com.itextpdf.text.Element;
 import com.itextpdf.text.PageSize;
-import com.itextpdf.text.Paragraph;
-import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import java.util.Arrays;
+import java.util.stream.Stream;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -67,6 +65,8 @@ public class Affichage_ProduitController implements Initializable {
     final ObservableList options = FXCollections.observableArrayList();
     public Button tf_pdf;
 
+    @FXML
+    private Button id_total;
     @FXML
     private ListView<Produit> list_view_produit;
     @FXML
@@ -188,6 +188,7 @@ public class Affichage_ProduitController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         // TODO
+        id_total.setVisible(false);
         id_modifier.setVisible(false);
         id_supprimer.setVisible(false);
         Produit produit1 = new Produit();
@@ -199,6 +200,7 @@ public class Affichage_ProduitController implements Initializable {
             if (event2.getClickCount() == 1) {
                 Produit produit = this.getList_view_produit().getSelectionModel().getSelectedItem();
                 setProduit(produit);
+                id_total.setVisible(true);
                 id_modifier.setVisible(true);
                 selectedindex = list_view_produit.getSelectionModel().getSelectedIndex();
                 id_supprimer.setVisible(true);
@@ -210,6 +212,7 @@ public class Affichage_ProduitController implements Initializable {
 //list_view_produit.getItems().add(produit);
         //SettingUpListView.listObjectsOn_listView(list_view_produit, listproduit, customEvent);
         SettingUpListView.listProduit_inside_listView(list_view_produit, listproduit, customEvent);
+        //rechereche avancee
         ProduitCrud per = new ProduitCrud();
         filterfield1.textProperty().addListener((obs, oldText, newText) -> {
             List<Produit> ae = per.Search(newText);
@@ -251,13 +254,13 @@ public class Affichage_ProduitController implements Initializable {
     void calculerT(ActionEvent event) {
         int num = list_view_produit.getItems().size();
         Integer tot = 0;
-       /* for (int i = 0; i < num; i++) {
+       for (int i = 0; i < num; i++) {
             Integer val = list_view_produit.getItems().get(i).getQuantite();
             tot += val;
 
-        }*/
+        }
 
-        notif("Nombre disponible de produits","Votre produits disponible   est :\n" +Integer.toString(num));
+        notif("Nombre disponible de produits","Votre produits disponible   est :\n" +Integer.toString(tot));
 
 
         }
@@ -280,23 +283,29 @@ public class Affichage_ProduitController implements Initializable {
 
 
     public void pdf(ActionEvent actionEvent) {
-
         try {
             Document document = new Document(PageSize.A4, 50, 50, 50, 50);
             PdfWriter.getInstance(document, new FileOutputStream("table.pdf"));
             document.open();
 
             // Define column widths
-            float[] columnWidths = {1f, 1f, 1f, 1f, 1f, 1f, 1f,1f};
-
+            float[] columnWidths = {1f, 2f, 1.5f, 1.5f, 1.5f, 2f, 2f, 1.5f};
 
             // Create PDF table and set column widths
             PdfPTable pdfTable = new PdfPTable(columnWidths.length);
             pdfTable.setWidths(columnWidths);
+            pdfTable.setWidthPercentage(100);
+
+            // Set table title and style
+            Paragraph title = new Paragraph("Liste des produits", FontFactory.getFont(FontFactory.TIMES_BOLD, 18, Font.BOLD));
+            title.setAlignment(Element.ALIGN_CENTER);
+            document.add(title);
+
+            document.add(Chunk.NEWLINE);
 
             // Add table header and rows
             addTableHeader(pdfTable);
-            addRows(pdfTable );
+            addRows(pdfTable);
 
             document.add(pdfTable);
 
@@ -313,18 +322,18 @@ public class Affichage_ProduitController implements Initializable {
         }
     }
     private void addTableHeader(PdfPTable pdfTable) {
-        pdfTable.addCell("ID");
-        pdfTable.addCell("Nom Produit");
-        pdfTable.addCell("Prix Produit");
-        pdfTable.addCell("Quantité Produit");
-        pdfTable.addCell("Marque Produit");
-        pdfTable.addCell("Description Produit");
-        pdfTable.addCell("Image Produit");
-        pdfTable.addCell("Catégorie ID");
+        Stream.of("ID", "Nom", "Prix", "Quantité", "Marque", "Description", "Image", "Catégorie")
+                .forEach(columnTitle -> {
+                    PdfPCell header = new PdfPCell();
+                    header.setBackgroundColor(BaseColor.LIGHT_GRAY);
+                    header.setHorizontalAlignment(Element.ALIGN_CENTER);
+                    header.setVerticalAlignment(Element.ALIGN_MIDDLE);
+                    header.setPhrase(new Phrase(columnTitle, FontFactory.getFont(FontFactory.TIMES_BOLD, 14, Font.BOLD)));
+                    pdfTable.addCell(header);
+                });
     }
 
-
-    private void addRows(PdfPTable pdfTable) {
+    private void addRows(PdfPTable pdfTable) throws BadElementException, IOException {
         for (Produit produit : listproduit) {
             pdfTable.addCell(String.valueOf(produit.getId()));
             pdfTable.addCell(produit.getNom_produit());
@@ -332,10 +341,25 @@ public class Affichage_ProduitController implements Initializable {
             pdfTable.addCell(produit.getQuantite()+"");
             pdfTable.addCell(produit.getMarque());
             pdfTable.addCell(produit.getDescription());
-            pdfTable.addCell(produit.getImage_produit());
+
+            // Check if image file exists and is a recognized format
+            String imagePath = "C:\\Users\\msi\\Desktop\\Connexion3A17\\src\\images\\" + produit.getImage_produit();
+            File imageFile = new File(imagePath);
+            if (imageFile.exists() && (imagePath.endsWith(".jpg") || imagePath.endsWith(".jpeg") || imagePath.endsWith(".png") || imagePath.endsWith(".gif"))) {
+                // Add image cell
+                PdfPCell imageCell = new PdfPCell();
+                Image image = Image.getInstance(imagePath);
+                imageCell.addElement(image);
+                pdfTable.addCell(imageCell);
+            } else {
+                // Add empty cell
+                pdfTable.addCell("");
+            }
+
             pdfTable.addCell(String.valueOf(produit.getCategorie_produit()));
         }
     }
+
 
 
 

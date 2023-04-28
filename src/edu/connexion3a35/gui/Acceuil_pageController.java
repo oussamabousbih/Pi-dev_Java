@@ -51,6 +51,8 @@ import javafx.stage.Stage;
 public class Acceuil_pageController implements Initializable {
 
     @FXML
+    public TextField tf_email;
+    @FXML
     private Button id_ajouter;
 
     @FXML
@@ -102,7 +104,9 @@ public class Acceuil_pageController implements Initializable {
         String prixText = tf_prix.getText();
         String image_produit = tf_image.getText();
         String marque = tf_marque.getText();
+        String email = tf_email.getText();
         Categorie selectedCategory = tf_cat.getValue();
+
 
         // check if input is valid
         if (!isValidInput(quantiteText, prixText, selectedCategory, nom_Produit, desc_produit, image_produit, marque)) {
@@ -117,6 +121,10 @@ public class Acceuil_pageController implements Initializable {
         System.out.println("edu.connexion3a35.gui.Acceuil_pageController.tf_ajouter()" + pro.getCategorie_produit());
 
         Produit p = new Produit(quantite, pro.getCategorie_produit(), prix, nom_Produit, marque, desc_produit, image_produit);
+        // badel construct ken t7eb ne9ss hetha
+        p.setEmail_r(email);
+
+
         ProduitCrud pr = new ProduitCrud();
         pr.ajouterEntitee(p);
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -136,7 +144,7 @@ public class Acceuil_pageController implements Initializable {
 
     private boolean isValidInput(String quantiteText, String prixText, Categorie selectedCategory, String nom_Produit, String desc_produit, String image_produit, String marque) {
         // check if all required fields are filled
-        if (nom_Produit.isEmpty() || desc_produit.isEmpty() || quantiteText.isEmpty() || prixText.isEmpty() || image_produit.isEmpty() || marque.isEmpty() || selectedCategory == null) {
+        if (nom_Produit.isEmpty() || desc_produit.isEmpty() || quantiteText.isEmpty() || prixText.isEmpty()  || marque.isEmpty() || selectedCategory == null) {
             // Afficher un message d'erreur si les champs obligatoires ne sont pas remplis
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erreur de saisie");
@@ -180,9 +188,8 @@ public class Acceuil_pageController implements Initializable {
             alert.showAndWait();
             return false;
         }
-
-        // check if image_produit ends with .jpg or .png
-        if (!image_produit.endsWith(".jpg") && !image_produit.endsWith(".png")) {
+        if (image_produit.isEmpty()) {
+        } else if (!image_produit.endsWith(".jpg") && !image_produit.endsWith(".png")) {
             // Afficher un message d'erreur si image_produit n'est pas un fichier .jpg ou .png
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erreur de saisie");
@@ -203,7 +210,7 @@ public class Acceuil_pageController implements Initializable {
         String nom_Categorie = tf_nomc.getText();
 
         // Check if nom_Categorie only contains letters
-        if (!nom_Categorie.matches("[a-zA-Z]+"+ " ")) {
+        if (!nom_Categorie.matches("[a-zA-Z !?\\-]+")) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erreur");
             alert.setContentText("Le champ nom_Categorie ne peut contenir que des lettres!");

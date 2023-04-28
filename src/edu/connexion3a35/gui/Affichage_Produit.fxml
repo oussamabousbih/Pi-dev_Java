@@ -18,10 +18,10 @@
          </font>
       </Label>
       <Button fx:id="id_ajouter" layoutX="443.0" layoutY="51.0" mnemonicParsing="false" onAction="#ajouter" prefHeight="30.0" prefWidth="101.0" styleClass="btn" stylesheets="@Table2.css" text="Ajouter" />
-      <Button layoutX="59.0" layoutY="349.0" mnemonicParsing="false" onAction="#calculerT" prefHeight="25.0" prefWidth="153.0" styleClass="btn" stylesheets="@Table2.css" text="total" />
+      <Button fx:id="id_total" layoutX="59.0" layoutY="307.0" mnemonicParsing="false" onAction="#calculerT" prefHeight="25.0" prefWidth="153.0" styleClass="btn" stylesheets="@Table2.css" text="total" />
       <Button layoutX="242.0" layoutY="349.0" mnemonicParsing="false" onAction="#Stats" prefHeight="25.0" prefWidth="153.0" styleClass="btn" stylesheets="@Table2.css" text="Statistique" />
       <Button layoutX="424.0" layoutY="349.0" mnemonicParsing="false" onAction="#Trier" prefHeight="25.0" prefWidth="153.0" styleClass="btn" stylesheets="@Table2.css" text="Trier" />
       <TextField fx:id="filterfield1" layoutX="77.0" layoutY="51.0" prefHeight="30.0" prefWidth="358.0" />
-      <Button fx:id="tf_pdf" layoutX="59.0" layoutY="307.0" mnemonicParsing="false" onAction="#pdf" prefHeight="30.0" prefWidth="153.0" styleClass="btn" stylesheets="@Table2.css" text="Pdf" />
+      <Button fx:id="tf_pdf" layoutX="59.0" layoutY="349.0" mnemonicParsing="false" onAction="#pdf" prefHeight="30.0" prefWidth="153.0" styleClass="btn" stylesheets="@Table2.css" text="Pdf" />
    </children>
 </AnchorPane>

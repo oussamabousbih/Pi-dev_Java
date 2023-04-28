@@ -28,8 +28,8 @@ private MyConnection ds=MyConnection.getInstance();
     @Override
     public void ajouterEntitee(Produit t) {
         try {
-            String requete = "INSERT INTO produit(categorie_produit_id,nom_produit,  description, quantite_produit, prix , image_produit, marque)"
-                    + "VALUES (?,?,?,?,?,?,?)";
+            String requete = "INSERT INTO produit(categorie_produit_id,nom_produit,  description, quantite_produit, prix , image_produit, marque, email_r)"
+                    + "VALUES (?,?,?,?,?,?,?,?)";
             PreparedStatement pst = MyConnection.getInstance().getCnx()
                     .prepareStatement(requete);
             pst.setInt(1, t.getCategorie_produit());
@@ -39,6 +39,7 @@ private MyConnection ds=MyConnection.getInstance();
             pst.setFloat(5, t.getPrix());
             pst.setString(6, t.getImage_produit());
             pst.setString(7, t.getMarque());
+            pst.setString(8, t.getEmail_r());
             pst.executeUpdate();
             System.out.println("ajouter succes!");
         } catch (SQLException ex) {
@@ -64,6 +65,7 @@ private MyConnection ds=MyConnection.getInstance();
                 p.setCategorie_produit(rs.getInt("categorie_produit_id"));
                 p.setQuantite(rs.getInt("quantite_produit"));
                 p.setPrix(rs.getFloat("prix"));
+                p.setEmail_r(rs.getString("email_r"));
                 myList.add(p);
             }
         } catch (SQLException ex) {
@@ -91,6 +93,7 @@ private MyConnection ds=MyConnection.getInstance();
                  p.setCategorie_produit(rs.getInt("categorie_produit_id"));
                 p.setQuantite(rs.getInt("quantite_produit"));
                 p.setPrix(rs.getFloat("prix"));
+                p.setEmail_r(rs.getString("email_r"));
                 Categorie categ = new Categorie( rs.getInt("categorie_id")  , rs.getString("nom_categorie") );
                 p.setCat(categ);
                 

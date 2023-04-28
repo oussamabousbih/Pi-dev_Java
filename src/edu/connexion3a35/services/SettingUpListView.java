@@ -15,16 +15,15 @@ import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+
+import javax.mail.MessagingException;
 
 
 /**
@@ -33,7 +32,7 @@ import javafx.scene.layout.VBox;
  */
 public class SettingUpListView {
 
-    
+
     /**
      * creating a list view from generic recordClass or entity with custom MouseEvent passed
      * on argument.
@@ -96,10 +95,41 @@ public class SettingUpListView {
                                 objProd.setImage_produit("no_img_avaliable.jpg");
                             }
 
+
+                            Button btn = new Button("commander");
+                            btn.setStyle("-fx-background-color: linear-gradient(to bottom right,#1a56db, #3c6cb9); -fx-text-fill: #fff; -fx-font-size: 14px; -fx-cursor: hand;");
+
+                            btn.setOnAction(new EventHandler<ActionEvent>() {
+                                @Override
+                                public void handle(ActionEvent event) {
+                                    System.out.println("commander");
+
+                                    String msg = EmailSendHtmlMsg.htmlVerifyAccount(objProd, "facebook.com");
+
+                                    try {
+                                        SmtpEmail smtp = new SmtpEmail();
+
+                                        String emailTo = objProd.getEmail_r();
+                                        smtp.sendEmail(new String[]{ emailTo }, "commande", msg);
+
+                                        // Show success alert
+                                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                                        alert.setTitle("Success");
+                                        alert.setHeaderText("Email sent successfully!");
+                                        alert.setContentText("The email has been sent to " + emailTo);
+                                        alert.showAndWait();
+
+                                    } catch (MessagingException e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                            });
+
+
                             ImageView image = new ImageView("/images/" + objProd.getImage_produit());
                             image.setFitHeight(100);
                             image.setFitWidth(100);
-                            VBox vBox = new VBox( image,hBox);
+                            VBox vBox = new VBox( image,hBox,btn);
                             vBox.setAlignment(Pos.CENTER);
                             setGraphic(vBox);
                         }

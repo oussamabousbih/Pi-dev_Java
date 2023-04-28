@@ -16,9 +16,12 @@ public class Produit {
     private float prix;
     Categorie cat;
 
-    private String nom_produit,marque,description,image_produit;
 
-    public Produit( String nom_produit,float quantite, String description, String image_produit) {
+    private String nom_produit,marque,description,image_produit,email_r;
+
+
+
+    public Produit(String nom_produit, float quantite, String description, String image_produit) {
         this.nom_produit = nom_produit;
         this.prix = quantite;
         this.description = description;
@@ -185,6 +188,14 @@ if (image_produit==null)
 
     public String getImage_produit() {
         return image_produit;
+    }
+
+    public String getEmail_r() {
+        return email_r;
+    }
+
+    public void setEmail_r(String email_r) {
+        this.email_r = email_r;
     }
 
 
