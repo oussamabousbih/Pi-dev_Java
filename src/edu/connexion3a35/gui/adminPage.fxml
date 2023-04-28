@@ -11,18 +11,13 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="800.0" prefWidth="1000.0" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.connexion3a35.gui.AdminPageController">
-   <ImageView fitHeight="80.0" fitWidth="113.0" layoutX="894.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
-      <image>
-         <Image url="@../../../../../AIDMELOGO.png" />
-      </image>
-   </ImageView>
+<AnchorPane fx:id="logoAid" prefHeight="800.0" prefWidth="1000.0" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.connexion3a35.gui.AdminPageController">
    <Text layoutX="437.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Admin Dashboard">
       <font>
          <Font name="System Bold" size="46.0" />
       </font>
    </Text>
-   <Button fx:id="btnDelete" layoutX="489.0" layoutY="714.0" mnemonicParsing="false" onAction="#delete" prefHeight="43.0" prefWidth="209.0" text="Supprimer" />
+   <Button fx:id="btnDelete" layoutX="432.0" layoutY="745.0" mnemonicParsing="false" onAction="#delete" prefHeight="43.0" prefWidth="209.0" text="Supprimer" />
    <Pane prefHeight="713.0" prefWidth="194.0">
       <children>
          <Button fx:id="btnLogout" layoutX="4.0" mnemonicParsing="false" onAction="#logout" prefHeight="43.0" prefWidth="186.0" styleClass="logout-button" text="Déconnecter" textFill="#d41111">
@@ -32,7 +27,7 @@
          </Button>
       </children>
    </Pane>
-   <TabPane layoutX="260.0" layoutY="143.0" prefHeight="714.0" prefWidth="870.0" tabClosingPolicy="UNAVAILABLE">
+   <TabPane layoutX="194.0" layoutY="137.0" prefHeight="714.0" prefWidth="816.0" tabClosingPolicy="UNAVAILABLE">
      <tabs>
        <Tab text="Untitled Tab 1">
          <content>
@@ -50,4 +45,9 @@
        </Tab>
      </tabs>
    </TabPane>
+   <ImageView fitHeight="117.0" fitWidth="136.0" layoutX="980.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@image/AIDMELOGO.png" />
+      </image>
+   </ImageView>
 </AnchorPane>

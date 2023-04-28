@@ -1,13 +1,18 @@
 .root {
-    background-color: #e5e5f7;
-    opacity: 0.8;
-    background-image:  repeating-radial-gradient( circle at 0 0, transparent 0, #e5e5f7 10px ), repeating-linear-gradient( #444cf755, #444cf7 );
+
+    -fx-background-color: linear-gradient(#c0c0c0, #4b93a5);
+    /*-fx-background-repeat: no-repeat;
+    -fx-background-size: 1000px 800px;
+    -fx-background-image-blend-mode: screen;
+    -fx-background-color: #e5e5f7;
+    -fx-opacity: 0.8;
+    -fx-background-image:  repeating-radial-gradient( circle at 0 0, transparent 0, #e5e5f7 10px ), repeating-linear-gradient( #444cf755, #444cf7 );*/
 }
-
-
-
-
-
+#logo{
+    -fx-background-image: url("../image/AIDMELOGO.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 100px 100px;
+}
 .button {
     -fx-font-family: "Arial";
     -fx-font-size: 23px;
