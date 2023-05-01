@@ -3,60 +3,156 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="426.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.AjoutFicheController">
+<AnchorPane id="AnchorPane" prefHeight="426.0" prefWidth="600.0" style="-fx-background-color: #edece8;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AjoutFicheController">
    <children>
-      <Label layoutX="59.0" layoutY="101.0" text="id" textFill="#16c5c7">
+      <Label layoutX="331.0" layoutY="137.0" text="id">
+        <font>
+            <Font name="Arial Rounded MT Bold" size="16.0" />
+         </font></Label>
+      <Label layoutX="319.0" layoutY="169.0" text="date consultation">
+        <font>
+            <Font name="Arial Rounded MT Bold" size="16.0" />
+         </font></Label>
+      <Label layoutX="327.0" layoutY="203.0" text="nom">
          <font>
             <Font name="Arial Rounded MT Bold" size="16.0" />
          </font></Label>
-      <Label layoutX="47.0" layoutY="133.0" text="date consultation" textFill="#16c5c7">
+      <Label layoutX="324.0" layoutY="234.0" text="prenom">
+        <font>
+            <Font name="Arial Rounded MT Bold" size="16.0" />
+         </font></Label>
+      <Label layoutX="323.0" layoutY="268.0" text="specialite">
          <font>
             <Font name="Arial Rounded MT Bold" size="16.0" />
          </font></Label>
-      <Label layoutX="55.0" layoutY="167.0" text="nom" textFill="#16c5c7">
+      <Label layoutX="324.0" layoutY="306.0" text="traitement">
+        <font>
+            <Font name="Arial Rounded MT Bold" size="16.0" />
+         </font></Label>
+      <Label layoutX="323.0" layoutY="342.0" text="reccomendation">
          <font>
             <Font name="Arial Rounded MT Bold" size="16.0" />
          </font></Label>
-      <Label layoutX="52.0" layoutY="198.0" text="prenom" textFill="#16c5c7">
+<TextField fx:id="fxdate_consultation" layoutX="541.0" layoutY="166.0" style="-fx-border-color: #8e9fbb;" />
+<TextField fx:id="fxfirstName" layoutX="541.0" layoutY="200.0" style="-fx-border-color: #8e9fbb;" />
+<TextField fx:id="fxlastName" layoutX="541.0" layoutY="231.0" style="-fx-border-color: #8e9fbb;" />
+<TextField fx:id="fxspecialite" layoutX="541.0" layoutY="265.0" style="-fx-border-color: #8e9fbb;" />
+<TextField fx:id="fxtraitemant" layoutX="541.0" layoutY="303.0" style="-fx-border-color: #8e9fbb;" />
+<TextField fx:id="fxreccomendation" layoutX="540.0" layoutY="339.0" style="-fx-border-color: #8e9fbb;" />
+     <TextField fx:id="fxid" layoutX="541.0" layoutY="134.0" style="-fx-border-color: #8e9fbb;" />
+
+      <Button fx:id="btnAjouter" layoutX="462.0" layoutY="434.0" mnemonicParsing="false" onAction="#AjouterFiche" prefHeight="37.0" prefWidth="122.0" style="-fx-background-color: #8e9fbb;" text="Ajouter">
          <font>
-            <Font name="Arial Rounded MT Bold" size="16.0" />
-         </font></Label>
-      <Label layoutX="51.0" layoutY="232.0" text="specialite" textFill="#16c5c7">
-         <font>
-            <Font name="Arial Rounded MT Bold" size="16.0" />
-         </font></Label>
-      <Label layoutX="52.0" layoutY="270.0" text="traitement" textFill="#16c5c7">
-         <font>
-            <Font name="Arial Rounded MT Bold" size="16.0" />
-         </font></Label>
-      <Label layoutX="51.0" layoutY="306.0" text="reccomendation" textFill="#16c5c7">
-         <font>
-            <Font name="Arial Rounded MT Bold" size="16.0" />
-         </font></Label>
-      <TextField fx:id="fxid" layoutX="269.0" layoutY="98.0" style="-fx-border-color: blue;" />
-      <TextField fx:id="fxdate_consultation" layoutX="269.0" layoutY="130.0" style="-fx-border-color: blue;" />
-      <TextField fx:id="fxfirstName" layoutX="269.0" layoutY="164.0" style="-fx-border-color: blue;" />
-      <TextField fx:id="fxlastName" layoutX="269.0" layoutY="195.0" style="-fx-border-color: blue;" />
-      <TextField fx:id="fxspecialite" layoutX="269.0" layoutY="229.0" style="-fx-border-color: blue;" />
-      <TextField fx:id="fxtraitemant" layoutX="269.0" layoutY="267.0" style="-fx-border-color: blue;" />
-      <TextField fx:id="fxreccomendation" layoutX="268.0" layoutY="303.0" style="-fx-border-color: blue;" />
-      <Button fx:id="btnAjouter" layoutX="204.0" layoutY="384.0" mnemonicParsing="false" onAction="#AjouterFiche" prefHeight="26.0" prefWidth="66.0" style="-fx-background-color: blue;" text="Ajouter" textFill="WHITE">
-         <font>
-            <Font name="Arial" size="14.0" />
-         </font></Button>
-      <Button fx:id="fxaffichelistF" layoutX="307.0" layoutY="384.0" mnemonicParsing="false" onAction="#affichelistfiche" style="-fx-background-color: blue;" text="afficher" textFill="WHITE">
-         <font>
-            <Font name="Arial" size="14.0" />
-         </font></Button>
+            <Font name="Arial Rounded MT Bold" size="18.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="24.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@\Users\AOUADI HADIL\Desktop\PiJave\src\icons/ajouter-le-fichier.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
       <Pane layoutY="71.0" prefHeight="1.0" prefWidth="600.0" style="-fx-background-color: grey;" />
       <Label layoutX="21.0" layoutY="21.0" text="Ajouter Votre Fiche" textFill="#182dd9">
          <font>
             <Font name="Arial Black" size="24.0" />
          </font>
       </Label>
+       <HBox layoutX="187.0" prefHeight="82.0" prefWidth="684.0" style="-fx-background-color: white;">
+         <children>
+            <Pane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <Label layoutX="14.0" layoutY="14.0" prefHeight="44.0" prefWidth="283.0" text="Votre Fiche Consultation">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="18.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@\Users\AOUADI HADIL\Desktop\PiJave\src\icons/dossier-medical1.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Label>
+               </children>
+            </Pane>
+         </children>
+      </HBox>
+      <VBox layoutX="1.0" prefHeight="563.0" prefWidth="186.0" style="-fx-background-color: #daeefe;">
+         <children>
+            <Pane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <Label layoutX="21.0" layoutY="14.0" prefHeight="58.0" prefWidth="123.0" text="AID ME" textAlignment="CENTER" textFill="#2600ff">
+                     <graphic>
+                        <ImageView fitHeight="46.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@\Users\AOUADI HADIL\Desktop\PiJave\src\icons/328698215_753170339422976_8917040743646367762_n.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+         </children>
+         <Button fx:id="fxhome" mnemonicParsing="false" onAction="#orientationhomeFiche" prefHeight="42.0" prefWidth="186.0" style="-fx-background-color: #daeefe;" text="Accueil">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="18.0" />
+               </font>
+            <graphic>
+               <ImageView fitHeight="28.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                     <Image url="@\Users\AOUADI HADIL\Desktop\PiJave\src\icons/hopital%20(1).png" />
+                  </image>
+               </ImageView>
+            </graphic>
+            </Button>
+            <Button fx:id="fxajout" mnemonicParsing="false" onAction="#AjouterFiche" prefHeight="46.0" prefWidth="186.0" style="-fx-background-color: #daeefe;" text="Ajouter Fiche">
+               <font>
+                 <Font name="Arial Rounded MT Bold" size="18.0" />
+               </font>
+            <graphic>
+               <ImageView fitHeight="31.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                     <Image url="@\Users\AOUADI HADIL\Desktop\PiJave\src\icons/ajouter-la-fiche.png" />
+                  </image>
+               </ImageView>
+            </graphic>
+            </Button>
+            <Button fx:id="fxafficheList" mnemonicParsing="false" onAction="#afficheList" prefHeight="41.0" prefWidth="186.0" style="-fx-background-color: #daeefe;" text="Vos Fiches">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="18.0" />
+               </font>
+            <graphic>
+               <ImageView fitHeight="29.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                     <Image url="@\Users\AOUADI HADIL\Desktop\PiJave\src\icons/dossier-medical%20(1).png" />
+                  </image>
+               </ImageView>
+            </graphic>
+            </Button>
+      </VBox>
+      <Button fx:id="fxenvoyer" layoutX="268.0" layoutY="433.0" mnemonicParsing="false" onAction="#envoyaermail" prefHeight="38.0" prefWidth="180.0" style="-fx-background-color: #8e9fbb;" text="Envoyer Email">
+      <font>
+            <Font name="Arial Rounded MT Bold" size="18.0" />
+      </font>
+         <graphic>
+            <ImageView fitHeight="24.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@\Users\AOUADI HADIL\Desktop\PiJave\src\icons/e-mail.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
    </children>
 </AnchorPane>
