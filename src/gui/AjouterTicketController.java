@@ -6,6 +6,7 @@
 package gui;
 
 import entities.event_ticket;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -13,7 +14,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import services.ticketService;
@@ -39,6 +42,8 @@ public class AjouterTicketController implements Initializable {
     private Button btnajouterticket;
     @FXML
     private TextField timage;
+    @FXML
+    private Button bsticket;
 
     /**
      * Initializes the controller class.
@@ -70,6 +75,19 @@ public class AjouterTicketController implements Initializable {
         
         
         
+    }
+
+    @FXML
+    private void bsticket(ActionEvent event) {
+        
+         try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("AfficheTicket.fxml"));
+            Parent root = loader.load();
+            bsticket.getScene().setRoot(root);
+        } catch (IOException ex) {
+            Logger.getLogger(AjouterEventController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     }
     
 }

@@ -27,7 +27,7 @@
       <TextField fx:id="tfimage" layoutX="312.0" layoutY="267.0" />
       <Button fx:id="btnajouterevent" layoutX="481.0" layoutY="339.0" mnemonicParsing="false" onAction="#ajouterevent" prefHeight="42.0" prefWidth="135.0" text="Ajouter">
          <font>
-            <Font name="Arial Rounded MT Bold" size="23.0" />
+            <Font name="Arial" size="23.0" />
          </font>
       </Button>
       <Text layoutX="123.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ajouter Evenement">
@@ -58,5 +58,9 @@
          </image>
       </ImageView>
       <TextArea fx:id="screen" layoutX="662.0" layoutY="369.0" prefHeight="200.0" prefWidth="200.0" />
+      <Button fx:id="bsAffich" layoutX="375.0" layoutY="339.0" mnemonicParsing="false" onAction="#bsAffich" prefHeight="29.0" prefWidth="94.0" text="Event">
+         <font>
+            <Font name="System Italic" size="23.0" />
+         </font></Button>
    </children>
 </AnchorPane>

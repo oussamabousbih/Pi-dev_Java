@@ -6,6 +6,7 @@
 package gui;
 
 import entities.event;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -13,7 +14,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -44,6 +47,8 @@ public class AjouterEventController implements Initializable {
     private TextField tfdatefin;
     @FXML
     private TextArea screen;
+    @FXML
+    private Button bsAffich;
 
     /**
      * Initializes the controller class.
@@ -77,6 +82,18 @@ public class AjouterEventController implements Initializable {
         
         
         
+    }
+
+    
+    @FXML
+    private void bsAffich(ActionEvent event) {
+         try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("AfficherEvent.fxml"));
+            Parent root = loader.load();
+            bsAffich.getScene().setRoot(root);
+        } catch (IOException ex) {
+            Logger.getLogger(AjouterEventController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
 }
