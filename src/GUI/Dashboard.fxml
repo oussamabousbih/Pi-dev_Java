@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane id="BorderPane" prefHeight="526.0" prefWidth="950.0" styleClass="parent" stylesheets="@Dash.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.DashboardController">
+<BorderPane id="BorderPane" prefHeight="526.0" prefWidth="950.0" styleClass="parent" stylesheets="@Dash.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.DashboardController">
    <left>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #EBE8F9;" styleClass="sidebar" stylesheets="@Dash.css" BorderPane.alignment="CENTER">
          <children>

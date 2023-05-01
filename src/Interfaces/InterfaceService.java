@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Interfaces;
+package interfaces;
 
-import Entities.Service;
+import entities.Service;
 import java.util.List;
 
 /**

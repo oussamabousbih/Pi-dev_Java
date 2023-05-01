@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package GUI;
+package gui;
 
-import Entities.TypeService;
-import Services.CRUDTypeService;
+import entities.TypeService;
+import services.CRUDTypeService;
 import java.io.IOException;
 import java.net.URL;
 import java.util.HashMap;

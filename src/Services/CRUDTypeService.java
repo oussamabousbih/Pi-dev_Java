@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Services;
+package services;
 
-import Entities.TypeService;
-import Utils.MyConnexion;
+import entities.TypeService;
+import utils.MyConnexion;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -18,7 +18,7 @@ import java.util.List;
  *
  * @author Yasmine Rajhi
  */
-public class CRUDTypeService implements Interfaces.InterfaceTypeService {
+public class CRUDTypeService implements interfaces.InterfaceTypeService {
     Statement ste;
     Connection conn = MyConnexion.getInstance().getConn();
 

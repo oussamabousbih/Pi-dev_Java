@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package GUI;
+package gui;
 
-import Entities.Service;
-import Entities.TypeService;
-import Services.CRUDService;
-import Services.CRUDTypeService;
+import entities.Service;
+import entities.TypeService;
+import services.CRUDService;
+import services.CRUDTypeService;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;

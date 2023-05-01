@@ -5,11 +5,11 @@
  */
 package legends;
 
-import Entities.Service;
-import Entities.TypeService;
-import Services.CRUDService;
-import Services.CRUDTypeService;
-import Utils.MyConnexion;
+import entities.Service;
+import entities.TypeService;
+import services.CRUDService;
+import services.CRUDTypeService;
+import utils.MyConnexion;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.sql.Date;
