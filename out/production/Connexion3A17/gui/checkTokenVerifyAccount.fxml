@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="800.0" prefWidth="1000.0" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.CheckTokenVerifyAccount">
+   <children>
+      <TextField fx:id="tfCode" layoutX="275.0" layoutY="379.0" prefHeight="34.0" prefWidth="484.0" promptText="ecrire code recu" />
+      <Button fx:id="btnValidate" layoutX="381.0" layoutY="428.0" mnemonicParsing="false" onAction="#verifyMyAccount" prefHeight="43.0" prefWidth="272.0" text="Verifier mon compte" />
+      <Label layoutX="232.0" layoutY="207.0" prefHeight="94.0" prefWidth="623.0" text="Récrire le code recu " textFill="#994b4b">
+         <font>
+            <Font size="64.0" />
+         </font>
+      </Label>
+      <Label layoutX="335.0" layoutY="294.0" prefHeight="71.0" prefWidth="418.0" text="par mail ou SMS" textFill="#b48787">
+         <font>
+            <Font name="System Bold" size="49.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
