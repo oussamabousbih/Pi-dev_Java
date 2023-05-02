@@ -24,8 +24,8 @@ public class SmtpEmailUser {
 
     public SmtpEmailUser() throws MessagingException {
         // storing the fromEmail as InternetAddress not String
-        this.fromEmail = new InternetAddress("aidme.io.tn@gmail.com");
-        this.configServerSmtp("2a21group5@gmail.com", "cotlmerzeszyfwuu");
+        //add the email and password
+        this.configServerSmtp("email@email.com", "password");
 
 
         createNewMessage_andAssignSender();
